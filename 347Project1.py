@@ -91,7 +91,34 @@ def standardNormalization(arr):
 
 
 ###################### Covariance Matrix #######################
+def covariance(arrA, arrB):
+    colsA = arrA.size
+    totalX = 0
+    totalY = 0
+    for index in range(0, colsA):
+        totalX += arrA[index]
+        totalY += arrB[index]
+    meanX = totalX/colsA
+    meanY = totalY/colsA
+    topVal = float(0)
+    for index in range(0, colsA):
+        topVal += ((arrA[index]-meanX)*(arrB[index]-meanY))
+    covarianceAB = topVal / colsA
 
+    return covarianceAB
+    
+
+def covarianceMatrix(arr):
+    rows = arr.shape[0]
+    cols = arr.shape[1]
+
+    #if rowindex == columnindex set to variance (covariance(arrX, arrX))
+    #in covariance send (covariance(arr[row] and arr[column])
+    retVal = np.eye(rows, cols)
+    for indexRow in range(0, rows):
+        for indexColumn in range(0, cols):
+            retVal[indexRow][indexColumn] = covariance(arr[indexRow], arr[indexColumn])
+    return retVal
 
 ###################### Label Encoding #######################
 def labelEncoding(catArr):
