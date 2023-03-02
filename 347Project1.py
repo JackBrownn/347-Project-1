@@ -119,10 +119,6 @@ def labelEncoding(catArr):
 
 
 
-categorical1 = [['C', 'B', 'B', 'A'], ['Freshman', 'Senior', 'Freshman', 'Junior']]
-categorical2 = [['A', 'B', 'A', 'C', 'C'], ['Freshman', 'Freshman', 'Freshman', 'Senior', 'Senior'], ['Sad', 'Angry', 'Sad', 'Happy', 'Bored']]
+############################################## Part 3 Answers ##########################################
 
-#oneHotResults = oneHotEncoding(categorical2)
-labelResults = labelEncoding(categorical2)
-
-print(labelResults)
+#data = 
