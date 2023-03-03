@@ -1,5 +1,6 @@
 import numpy as np  
 import math
+import pandas as pd
 
 
 ###################### Mean #######################
@@ -91,6 +92,17 @@ def standardNormalization(arr):
 
 
 ###################### Covariance Matrix #######################
+def covarianceMatrix(arr):
+    rows = arr.shape[0]
+    cols = arr.shape[1]
+
+    #if rowindex == columnindex set to variance (covariance(arrX, arrX))
+    #in covariance send (covariance(arr[row] and arr[column])
+    retVal = np.eye(rows, cols)
+    for indexRow in range(0, rows):
+        for indexColumn in range(0, cols):
+            retVal[indexRow][indexColumn] = covariance(arr[indexRow], arr[indexColumn])
+    return retVal
 
 
 ###################### Label Encoding #######################
@@ -114,11 +126,57 @@ def labelEncoding(catArr):
 
         finalEncode.append(newArr)
 
+    return(np.array(finalEncode))
 
+
+###################### One Hot Encoding #######################
+def oneHotEncoding(catArr):
+
+    catArr = np.array(catArr)
+    indArr = np.split(catArr, len(catArr))  #splits the 2D into individual 1D arrays
+    finalEncode = []
+
+    for item in indArr:    #loops thourgh every individual array
+      item = item.ravel()  #removes unnecessary brackets
+
+      rows = len(item)
+      cols = len(np.unique(item))
+      encodedArr = [[0]*rows for i in range(cols)]
+
+      uniqueArr = [[0]*1 for i in range(cols)]
+      for i in range(len(uniqueArr)):
+        for j in range(len(uniqueArr[i])):
+          uniqueArr[i][j] = np.unique(item)[i]
+
+
+      for i in range(len(encodedArr)):
+        for j in range(len(encodedArr[i])):
+          if([item[j]] == uniqueArr[i]):
+            encodedArr[i][j] = 1
+
+
+      for arr in encodedArr:
+        finalEncode.append(arr)
+        
+    
     return(finalEncode)
 
 
 
 ############################################## Part 3 Answers ##########################################
 
-#data = 
+#import os
+#print(os.getcwd())  
+from numpy import genfromtxt
+
+data =  pd.read_csv('adultTest.data', sep=",") 
+
+categoricalAttributes = data.iloc[:, [1, 3, 5, 6, 7, 8, 9, 13, 14]]
+data.iloc[:, [1, 3, 5, 6, 7, 8, 9, 13, 14]] = labelEncoding(categoricalAttributes)
+data = np.array(data)
+
+
+print('Multivariate Mean: ', mean(data))
+print('Covariance Matrix: ', covarianceMatrix(data))
+print('Scatter Plots: ')
+print('Multivariate Mean: ')
