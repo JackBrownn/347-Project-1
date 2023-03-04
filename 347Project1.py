@@ -26,6 +26,17 @@ def covariance(v1,v2):
         ret = ret +((v1[i]-m1)*(v2[i]-m2))
     return (ret/(c1-1))
 
+###################### Negative Covariance #######################
+def negCovariance(arr):
+    cols = np.shape(arr)[1]
+    num = 0
+
+    for row in range(cols):
+        for column in range(row, cols):
+            if (covariance(arr[:,row], arr[:,column]) < 0):
+                num += 1
+
+    return num
 
 ###################### Correlation  #######################
 def correlation(v1,v2):
@@ -256,3 +267,6 @@ plt.show()
 
 # CORRELATION GREATER THAN .5
 print(correlationGreater(data, .5))
+
+# NEGATIVE SAMPLE COVARIANCE
+print(negCovariance(data))
