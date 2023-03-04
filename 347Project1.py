@@ -222,7 +222,31 @@ data = np.array(data)
 print('Multivariate Mean: ', mean(data))
 print('Covariance Matrix: ', covarianceMatrix(data))
 print('Scatter Plots: ')
-print('Multivariate Mean: ')
+
+plt.scatter(np.array(data[:,1]), np.array(data[:,3]))
+plt.xlabel("Work-Class")
+plt.ylabel("Education Level")
+plt.show()
+
+plt.scatter(np.array(data[:,3]), np.array(data[:,7]))
+plt.xlabel("Education Level")
+plt.ylabel("Relationship Status")
+plt.show()
+
+plt.scatter(np.array(data[:,0]), np.array(data[:,12]))
+plt.xlabel("Age (Years)")
+plt.ylabel("Hours Worked Per Week")
+plt.show()
+
+plt.scatter(np.array(data[:,6]), np.array(data[:,9]))
+plt.xlabel("Occupation")
+plt.ylabel("Sex")
+plt.show()
+
+plt.scatter(np.array(data[:,13]), np.array(data[:,5]))
+plt.xlabel("Native Country")
+plt.ylabel("Marital Status")
+plt.show()
 =======
 #data = 
 >>>>>>> 589bb1a62c6bfd36439d99f61ffc37628339f84c
@@ -259,40 +283,15 @@ print(covariance(zScore11, zScore12))
 
 ################################ 5 Scatterplots ################################
 
-plt.scatter(np.array(data[:,1]), np.array(data[:,3]))
-plt.xlabel("Work-Class")
-plt.ylabel("Education Level")
-plt.show()
-
-plt.scatter(np.array(data[:,3]), np.array(data[:,7]))
-plt.xlabel("Education Level")
-plt.ylabel("Relationship Status")
-plt.show()
-
-plt.scatter(np.array(data[:,0]), np.array(data[:,12]))
-plt.xlabel("Age (Years)")
-plt.ylabel("Hours Worked Per Week")
-plt.show()
-
-plt.scatter(np.array(data[:,6]), np.array(data[:,9]))
-plt.xlabel("Occupation")
-plt.ylabel("Sex")
-plt.show()
-
-plt.scatter(np.array(data[:,13]), np.array(data[:,5]))
-plt.xlabel("Native Country")
-plt.ylabel("Marital Status")
-plt.show()
-
 
 # CORRELATION GREATER THAN .5
-print(correlationGreater(data, .5))
+print("Number of pairs with a correlation > .5: " + str(correlationGreater(data, .5)))
 
 # NEGATIVE SAMPLE COVARIANCE
-print(negCovariance(data))
+print("Number of pairs with a negative sample covariance: " + str(negCovariance(data)))
 
 # TOTAL VARIANCE
-print(totalVariance(data))
+print("Total Variance of the Data: " + totalVariance(data))
 
 # TOTAL VARIANCE OF 5 GREATEST
-print(str(12089776858.609715 + 4105580.4150943398 + 173946.83018867925 + 26.41509433962264 + 0.7169811320754716))
+print("Total Variance from the top 5 sample variances: " + str(12089776858.609715 + 4105580.4150943398 + 173946.83018867925 + 26.41509433962264 + 0.7169811320754716))
