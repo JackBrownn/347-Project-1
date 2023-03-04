@@ -213,6 +213,8 @@ from numpy import genfromtxt
 data =  pd.read_csv('adultTest.data', sep=",") 
 
 categoricalAttributes = data.iloc[:, [1, 3, 5, 6, 7, 8, 9, 13, 14]]
+numericalAttributes = data.iloc[:, [2, 4, 10, 11, 12]]
+numericalAttributes = np.array(numericalAttributes)
 data.iloc[:, [1, 3, 5, 6, 7, 8, 9, 13, 14]] = labelEncoding(categoricalAttributes)
 data = np.array(data)
 
@@ -224,6 +226,36 @@ print('Multivariate Mean: ')
 =======
 #data = 
 >>>>>>> 589bb1a62c6bfd36439d99f61ffc37628339f84c
+
+############################ Z-Score Normalization ############################
+
+zScore = standardNormalization(numericalAttributes)
+zScore2 = []
+zScore4 = []
+zScore10 = []
+zScore11 = []
+zScore12 = []
+for i in range(len(zScore)):
+    zScore2.append(zScore[i][0])
+    zScore4.append(zScore[i][1])
+    zScore10.append(zScore[i][2])
+    zScore11.append(zScore[i][3])
+    zScore12.append(zScore[i][4])
+
+
+print(covariance(zScore2, zScore4))
+print(covariance(zScore2, zScore10))
+print(covariance(zScore2, zScore11))
+print(covariance(zScore2, zScore12))
+
+print(covariance(zScore4, zScore10))
+print(covariance(zScore4, zScore11))
+print(covariance(zScore4, zScore12))
+
+print(covariance(zScore10, zScore11))
+print(covariance(zScore10, zScore12))
+
+print(covariance(zScore11, zScore12))
 
 ################################ 5 Scatterplots ################################
 
