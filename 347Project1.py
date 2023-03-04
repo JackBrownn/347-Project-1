@@ -26,6 +26,25 @@ def covariance(v1,v2):
         ret = ret +((v1[i]-m1)*(v2[i]-m2))
     return (ret/(c1-1))
 
+###################### Sample/Total Variance ##############
+def sampleVariance(arr):
+    arrayMean = np.mean(arr)
+    total = 0
+    for i in range(arr.size):
+        total += ((arr[i] - arrayMean) ** 2)
+        
+    return total / (arr.size - 1)
+
+def totalVariance(arr):
+    cols = np.shape(arr)[1]
+    totalVar = 0
+    
+    for column in range(cols):
+        print(sampleVariance(arr[:,column]))
+        totalVar += sampleVariance(arr[:,column])
+        
+    return totalVar
+
 ###################### Negative Covariance #######################
 def negCovariance(arr):
     cols = np.shape(arr)[1]
@@ -270,3 +289,9 @@ print(correlationGreater(data, .5))
 
 # NEGATIVE SAMPLE COVARIANCE
 print(negCovariance(data))
+
+# TOTAL VARIANCE
+print(totalVariance(data))
+
+# TOTAL VARIANCE OF 5 GREATEST
+print(str(12089776858.609715 + 4105580.4150943398 + 173946.83018867925 + 26.41509433962264 + 0.7169811320754716))
