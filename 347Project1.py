@@ -210,7 +210,7 @@ def oneHotEncoding(catArr): # Function using One-Hot Encoding on categorical var
 #print(os.getcwd())  
 from numpy import genfromtxt
 
-data =  pd.read_csv('adultTest.data', sep=",") 
+data =  pd.read_csv('adult.data', sep=",") 
 
 categoricalAttributes = data.iloc[:, [1, 3, 5, 6, 7, 8, 9, 13, 14]]
 numericalAttributes = data.iloc[:, [2, 4, 10, 11, 12]]
