@@ -58,6 +58,18 @@ def correlation(v1,v2):
     
     return(top/(l1*l2))
 
+###################### Correlation Greater #######################
+def correlationGreater(arr, g):
+    cols = np.shape(arr)[1]
+    num = 0
+
+    for row in range(cols):
+        for column in range(row, cols):
+            if (correlation(arr[:,row], arr[:,column]) >= g):
+                num += 1
+
+    return num
+
 
 ###################### Range Normalization #######################
 def rangeNormalization(arr, minimum, maximum):
@@ -240,3 +252,7 @@ plt.scatter(np.array(data[:,13]), np.array(data[:,5]))
 plt.xlabel("Native Country")
 plt.ylabel("Marital Status")
 plt.show()
+
+
+# CORRELATION GREATER THAN .5
+print(correlationGreater(data, .5))
