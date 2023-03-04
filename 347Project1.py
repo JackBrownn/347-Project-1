@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 ###################### Mean #######################
-def mean(arr): # function to calculate multivariate mean of dataset
+def mean(arr): # Function to calculate multivariate mean of dataset
     num_rows, num_cols = arr.shape # stores number of rows and columns
     ret = []
     for i in range(num_cols):
