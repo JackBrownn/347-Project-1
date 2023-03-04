@@ -134,7 +134,7 @@ def standardNormalization(arr): # Function using z-score normalization to normal
 
 
 ###################### Covariance Matrix #######################
-<<<<<<< HEAD
+
 def covarianceMatrix(arr): # Function to find the covariance matrix of a datset
     cols = arr.shape[1]
     covMat = np.empty([cols, cols]) # creates empty 2D array for covariance matrix
@@ -205,7 +205,7 @@ def oneHotEncoding(catArr): # Function using One-Hot Encoding on categorical var
 
 ############################################## Part 3 Answers ##########################################
 
-<<<<<<< HEAD
+
 #import os
 #print(os.getcwd())  
 from numpy import genfromtxt
@@ -247,9 +247,7 @@ plt.scatter(np.array(data[:,13]), np.array(data[:,5]))
 plt.xlabel("Native Country")
 plt.ylabel("Marital Status")
 plt.show()
-=======
-#data = 
->>>>>>> 589bb1a62c6bfd36439d99f61ffc37628339f84c
+
 
 ############################ Z-Score Normalization ############################
 
