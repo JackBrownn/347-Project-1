@@ -92,7 +92,6 @@ def standardNormalization(arr):
 
 
 ###################### Covariance Matrix #######################
-<<<<<<< HEAD
 def covarianceMatrix(arr):
     rows = arr.shape[0]
     cols = arr.shape[1]
@@ -104,36 +103,7 @@ def covarianceMatrix(arr):
         for indexColumn in range(0, cols):
             retVal[indexRow][indexColumn] = covariance(arr[indexRow], arr[indexColumn])
     return retVal
-=======
-def covariance(arrA, arrB):
-    colsA = arrA.size
-    totalX = 0
-    totalY = 0
-    for index in range(0, colsA):
-        totalX += arrA[index]
-        totalY += arrB[index]
-    meanX = totalX/colsA
-    meanY = totalY/colsA
-    topVal = float(0)
-    for index in range(0, colsA):
-        topVal += ((arrA[index]-meanX)*(arrB[index]-meanY))
-    covarianceAB = topVal / colsA
 
-    return covarianceAB
-    
->>>>>>> 589bb1a62c6bfd36439d99f61ffc37628339f84c
-
-def covarianceMatrix(arr):
-    rows = arr.shape[0]
-    cols = arr.shape[1]
-
-    #if rowindex == columnindex set to variance (covariance(arrX, arrX))
-    #in covariance send (covariance(arr[row] and arr[column])
-    retVal = np.eye(rows, cols)
-    for indexRow in range(0, rows):
-        for indexColumn in range(0, cols):
-            retVal[indexRow][indexColumn] = covariance(arr[indexRow], arr[indexColumn])
-    return retVal
 
 ###################### Label Encoding #######################
 def labelEncoding(catArr):
@@ -195,22 +165,62 @@ def oneHotEncoding(catArr):
 
 ############################################## Part 3 Answers ##########################################
 
-<<<<<<< HEAD
 #import os
 #print(os.getcwd())  
 from numpy import genfromtxt
 
+#read in data: must be in the 347-project-1 directory to work
 data =  pd.read_csv('adultTest.data', sep=",") 
 
+#label encode the categorical attributes and turn matrix in to numpy array
 categoricalAttributes = data.iloc[:, [1, 3, 5, 6, 7, 8, 9, 13, 14]]
+numericalAttributes = data.iloc[:, [2, 4, 10, 11, 12]]
+numericalAttributes = np.array(numericalAttributes)
+
+
 data.iloc[:, [1, 3, 5, 6, 7, 8, 9, 13, 14]] = labelEncoding(categoricalAttributes)
 data = np.array(data)
 
 
+
+
+#Print answers to Part 3
 print('Multivariate Mean: ', mean(data))
 print('Covariance Matrix: ', covarianceMatrix(data))
-print('Scatter Plots: ')
+print('Scatter Plots: ', )
 print('Multivariate Mean: ')
-=======
-#data = 
->>>>>>> 589bb1a62c6bfd36439d99f61ffc37628339f84c
+print("blah")
+
+#print(numericalAttribute2)
+
+
+
+zScore = standardNormalization(numericalAttributes)
+zScore2 = []
+zScore4 = []
+zScore10 = []
+zScore11 = []
+zScore12 = []
+for i in range(len(zScore)):
+    zScore2.append(zScore[i][0])
+    zScore4.append(zScore[i][1])
+    zScore10.append(zScore[i][2])
+    zScore11.append(zScore[i][3])
+    zScore12.append(zScore[i][4])
+
+
+print(covariance(zScore2, zScore4))
+print(covariance(zScore2, zScore10))
+print(covariance(zScore2, zScore11))
+print(covariance(zScore2, zScore12))
+
+print(covariance(zScore4, zScore10))
+print(covariance(zScore4, zScore11))
+print(covariance(zScore4, zScore12))
+
+print(covariance(zScore10, zScore11))
+print(covariance(zScore10, zScore12))
+
+print(covariance(zScore11, zScore12))
+
+
