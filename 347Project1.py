@@ -1,6 +1,7 @@
 import numpy as np  
 import math
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 ###################### Mean #######################
@@ -212,3 +213,30 @@ print('Multivariate Mean: ')
 =======
 #data = 
 >>>>>>> 589bb1a62c6bfd36439d99f61ffc37628339f84c
+
+################################ 5 Scatterplots ################################
+
+plt.scatter(np.array(data[:,1]), np.array(data[:,3]))
+plt.xlabel("Work-Class")
+plt.ylabel("Education Level")
+plt.show()
+
+plt.scatter(np.array(data[:,3]), np.array(data[:,7]))
+plt.xlabel("Education Level")
+plt.ylabel("Relationship Status")
+plt.show()
+
+plt.scatter(np.array(data[:,0]), np.array(data[:,12]))
+plt.xlabel("Age (Years)")
+plt.ylabel("Hours Worked Per Week")
+plt.show()
+
+plt.scatter(np.array(data[:,6]), np.array(data[:,9]))
+plt.xlabel("Occupation")
+plt.ylabel("Sex")
+plt.show()
+
+plt.scatter(np.array(data[:,13]), np.array(data[:,5]))
+plt.xlabel("Native Country")
+plt.ylabel("Marital Status")
+plt.show()
